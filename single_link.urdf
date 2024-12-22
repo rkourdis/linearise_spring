@@ -1,0 +1,43 @@
+<robot name="single_link">
+    <link name="world"/>
+
+    <link name="m1">
+        <inertial>
+            <mass value="0.1"/>
+
+            <!-- Center of mass position and mass distribution tensor -->
+            <origin xyz="0.2 0.0 0.0" rpy="0 0 0"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial>
+
+        <!--> Point mass visual  <-->
+        <visual>
+            <origin xyz="0.2 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.02"/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.2 0.0 1.0"/>
+            </material>
+        </visual>
+
+        <!--> Massless rod visual  <-->
+        <visual>
+            <origin xyz="0.1 0 0" rpy="0 1.57 0"/>
+            <geometry>
+                <cylinder radius="0.005" length="0.2"/>
+            </geometry>
+            <material name="grey">
+                <color rgba="0.6 0.6 0.6 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="j1" type="revolute">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="world"/>
+        <child link = "m1"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-3.14" upper="3.14" effort="100" velocity="100"/>
+    </joint>
+</robot>
