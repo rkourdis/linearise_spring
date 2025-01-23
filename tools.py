@@ -5,9 +5,9 @@ import pinocchio as pin
 from pinocchio import visualize
 from pinocchio import casadi as cpin
 
-def load_robot():
+def load_robot(urdf = "dual_mass/double_link.urdf"):
     PKG_PATH = os.path.dirname(__file__)
-    URDF_PATH = os.path.join(PKG_PATH, "double_link.urdf")
+    URDF_PATH = os.path.join(PKG_PATH, urdf)
 
     robot = pin.RobotWrapper.BuildFromURDF(URDF_PATH, package_dirs = [PKG_PATH])
     robot.gravity = pin.Motion.Zero()
